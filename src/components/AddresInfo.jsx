@@ -58,7 +58,7 @@ const AddresInfo = ({ addressData }) => {
           </div>
           <div className="col-3 border-end border-2">
             <Label>Location</Label>
-            <Info>{addressData.location.city}, {addressData.location.region} {addressData.location.postalCode}</Info>
+            <Info>{addressData.location.city}, {addressData.location.region}</Info>
           </div>
           <div className="col-3 border-end border-2">
             <Label>Timezone</Label>
