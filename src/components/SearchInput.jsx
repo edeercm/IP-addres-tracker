@@ -47,9 +47,9 @@ const SearchInput = () => {
       reset();
     }
   };
-  
+
   return <>
-  <form className='d-flex flex-row' onSubmit={handleSubmit(onSubmit)}>
+    <form className='d-flex flex-row' onSubmit={handleSubmit(onSubmit)}>
       <div className='d-flex flex-column gap-1'>
         <Input
           type="text"
@@ -58,9 +58,9 @@ const SearchInput = () => {
           placeholder='Search for any IP addres or domain'
           {...register("text", { required: true })}
           onBlur={() => handleBlur("text")}
-          className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+          className={`form-control ${errors.text ? 'is-invalid' : ''}`}
         />
-         {errors.email && <div className="invalid-feedback">Please enter a valid IP address or domain</div>}
+        {errors.text && <div className="invalid-feedback">Please enter a valid IP address or domain</div>}
       </div>
       <SubmitBtn
         type="submit"

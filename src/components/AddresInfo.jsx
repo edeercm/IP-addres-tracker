@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Card = styled.div`
-  margin: 2.75rem 0 -4.25rem;
+  position: absolute;
+  top: 27.5%;
   z-index: 999;
   display: flex;
   align-items: center;
@@ -46,26 +47,26 @@ const Info = styled.p`
   }
 `
 
-const AddresInfo = () => {
+const AddresInfo = ({ addressData }) => {
   return <>
     <Card>
       <div className="container">
         <div className="row">
           <div className="col-3 border-end border-2">
             <Label>Ip addres</Label>
-            <Info>123.123.123.123</Info>
+            <Info>{addressData.ip}</Info>
           </div>
           <div className="col-3 border-end border-2">
             <Label>Location</Label>
-            <Info>Brooklyn, Ny 10001</Info>
+            <Info>{addressData.location.city}, {addressData.location.region} {addressData.location.postalCode}</Info>
           </div>
           <div className="col-3 border-end border-2">
             <Label>Timezone</Label>
-            <Info>UTC -05:00</Info>
+            <Info>{addressData.location.timezone}</Info>
           </div>
           <div className="col-3">
             <Label>Isp</Label>
-            <Info>Space X</Info>
+            <Info>{addressData.isp}</Info>
           </div>
         </div>
       </div>
