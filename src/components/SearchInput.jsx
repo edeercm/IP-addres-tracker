@@ -1,5 +1,4 @@
-import React from 'react'
-import { useForm } from 'react-hook-form';
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import arrow from '../assets/images/icon-arrow.svg'
 
@@ -34,38 +33,38 @@ const Arrow = styled.img`
   width: auto;
 `
 
-const SearchInput = () => {
+const SearchInput = ({ ipAddress, setIpAddress, getEnteredData }) => {
 
-  const { handleSubmit, register, formState: { errors, isDirty, isValid }, reset, trigger } = useForm();
+  const [isValidInput, setIsValidInput] = useState(false);
+  const checkIpAddress = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/;
+  const checkDomain = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+/;
 
-  const handleBlur = async () => {
-    await trigger();
-  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    getEnteredData();
+    // setIpAddress("");
+  }
 
-  const onSubmit = () => {
-    if (isValid) {
-      reset();
-    }
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setIsValidInput(checkIpAddress.test(value) || checkDomain.test(value));
+    setIpAddress(value);
   };
 
   return <>
-    <form className='d-flex flex-row' onSubmit={handleSubmit(onSubmit)}>
-      <div className='d-flex flex-column gap-1'>
+    <form autoComplete='off' className='d-flex flex-row' onSubmit={handleSubmit}>
+      <div className='d-flex flex-column'>
         <Input
           type="text"
-          name='ipaddres'
-          id='ipaddres'
+          name='ipaddress'
+          id='ipaddress'
           placeholder='Search for any IP addres or domain'
-          {...register("text", { required: true })}
-          onBlur={() => handleBlur("text")}
-          className={`form-control ${errors.text ? 'is-invalid' : ''}`}
+          className='form-control'
+          value={ipAddress}
+          onChange={handleInputChange}
         />
-        {errors.text && <div className="invalid-feedback">Please enter a valid IP address or domain</div>}
       </div>
-      <SubmitBtn
-        type="submit"
-        disabled={!isDirty || !isValid}
-      >
+      <SubmitBtn type="submit" disabled={!isValidInput}>
         <Arrow src={arrow} alt="arrow" />
       </SubmitBtn>
     </form>
