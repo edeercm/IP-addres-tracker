@@ -63,7 +63,7 @@ const SearchInput = ({ ipAddress, setIpAddress, getEnteredData }) => {
       <form autoComplete='off' className='d-flex flex-row' onSubmit={handleSubmit}>
         <div className='d-flex flex-column'>
           <Input
-            type="text"
+            type="tex"
             name='ipaddress'
             id='ipaddress'
             placeholder='Search for any IP addres or domain'
