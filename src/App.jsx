@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import bgdesktop from './assets/images/pattern-desktop.png'
 import bgmobile from './assets/images/pattern-mobile.png'
 import SearchInput from './components/SearchInput'
-import AddresInfo from './components/AddresInfo'
+import AddressInfo from './components/AddresInfo'
 import Map from './components/Map/Map'
 import './App.css'
 import './reset.css'
@@ -21,6 +21,7 @@ const Background = styled.div`
 
     @media (max-width: 991.98px) {
       background-image: url(${bgmobile});
+      padding: 5rem 0 0;
     }
   `
 
@@ -70,7 +71,7 @@ function App() {
       {address &&
         <>
           <div className='d-flex justify-content-center'>
-            <AddresInfo addressData={address} />
+            <AddressInfo addressData={address} />
           </div>
           <Map addressData={address} />
         </>

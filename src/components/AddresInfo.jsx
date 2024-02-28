@@ -15,9 +15,14 @@ const Card = styled.div`
   box-shadow: 0 0.75rem 1rem hsl(0, 0%, 59%);
 
   @media (min-width: 575.98px) and (max-width: 991.98px) {
+    width: 90%;
+    height: 15svh;
   }
 
   @media (max-width: 575.97px) {
+    width: 90%;
+    height: 40svh;
+    padding: 0;
   }
 `
 
@@ -41,6 +46,7 @@ const Info = styled.p`
   text-transform: uppercase;
 
   @media (min-width: 575.98px) and (max-width: 991.98px) {
+    font-size: 1.125rem;
   }
 
   @media (max-width: 575.97px) {
@@ -50,21 +56,21 @@ const Info = styled.p`
 const AddresInfo = ({ addressData }) => {
   return <>
     <Card>
-      <div className="container">
+      <div className="container text-center text-md-start">
         <div className="row">
-          <div className="col-3 border-end border-2">
+          <div className="col-12 col-md-3 mt-3 mt-md-0 border-none border-0 border-md-end border-md-2">
             <Label>Ip addres</Label>
             <Info>{addressData.ip}</Info>
           </div>
-          <div className="col-3 border-end border-2">
+          <div className="col-12 col-md-3 border-none border-0 border-md-end border-md-2">
             <Label>Location</Label>
             <Info>{addressData.location.city}, {addressData.location.region}</Info>
           </div>
-          <div className="col-3 border-end border-2">
+          <div className="col-12 col-md-3 border-none border-0 border-md-end border-md-2">
             <Label>Timezone</Label>
             <Info>{addressData.location.timezone}</Info>
           </div>
-          <div className="col-3">
+          <div className="col-12 col-md-3">
             <Label>Isp</Label>
             <Info>{addressData.isp}</Info>
           </div>
